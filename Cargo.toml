@@ -18,6 +18,7 @@ members = [
     "day08pt2",
     "day09",
     "day09pt2",
+    "day10",
 ]
 
 [profile.dev]
