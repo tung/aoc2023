@@ -144,6 +144,13 @@ dependencies = [
 ]
 
 [[package]]
+name = "day17pt2"
+version = "0.1.0"
+dependencies = [
+ "pathfinding",
+]
+
+[[package]]
 name = "deprecate-until"
 version = "0.1.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
