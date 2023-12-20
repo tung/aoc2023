@@ -33,13 +33,10 @@ fn combos(
                     op: '<',
                     value,
                 }) => {
-                    let pi = match prop {
-                        'x' => 0,
-                        'm' => 1,
-                        'a' => 2,
-                        's' => 3,
-                        _ => panic!("unknown prop"),
-                    };
+                    let pi = ['x', 'm', 'a', 's']
+                        .iter()
+                        .position(|&c| c == prop)
+                        .expect("prop index");
                     let mut sub_r = r;
                     sub_r[pi][1] = value - 1;
                     result += combos(workflows, &rule.dest, sub_r);
@@ -50,13 +47,10 @@ fn combos(
                     op: '>',
                     value,
                 }) => {
-                    let pi = match prop {
-                        'x' => 0,
-                        'm' => 1,
-                        'a' => 2,
-                        's' => 3,
-                        _ => panic!("unknown prop"),
-                    };
+                    let pi = ['x', 'm', 'a', 's']
+                        .iter()
+                        .position(|&c| c == prop)
+                        .expect("prop index");
                     let mut sub_r = r;
                     sub_r[pi][0] = value + 1;
                     result += combos(workflows, &rule.dest, sub_r);

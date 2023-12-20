@@ -92,13 +92,10 @@ fn main() {
                             op: '<',
                             value,
                         }) => {
-                            let pi = match prop {
-                                'x' => 0,
-                                'm' => 1,
-                                'a' => 2,
-                                's' => 3,
-                                _ => panic!("unknown prop"),
-                            };
+                            let pi = ['x', 'm', 'a', 's']
+                                .iter()
+                                .position(|&c| c == prop)
+                                .expect("prop index");
                             part[pi] < value
                         }
                         Some(Test {
@@ -106,13 +103,10 @@ fn main() {
                             op: '>',
                             value,
                         }) => {
-                            let pi = match prop {
-                                'x' => 0,
-                                'm' => 1,
-                                'a' => 2,
-                                's' => 3,
-                                _ => panic!("unknown prop"),
-                            };
+                            let pi = ['x', 'm', 'a', 's']
+                                .iter()
+                                .position(|&c| c == prop)
+                                .expect("prop index");
                             part[pi] > value
                         }
                         _ => true,
