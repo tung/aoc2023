@@ -1,4 +1,5 @@
 /target
 input.txt
 sample*.txt
-/janet
+/day20pt2/*.txt
+/day20pt2/*.gv
