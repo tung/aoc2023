@@ -1,0 +1,4 @@
+15427 * x^2 + 15560 * x + 3921
+https://www.wolframalpha.com/input?i=quadratic+fit+calculator&assumption=%7B%22F%22%2C+%22QuadraticFitCalculator%22%2C+%22data3x%22%7D+-%3E%22%7B0%2C+1%2C+2%7D%22&assumption=%7B%22F%22%2C+%22QuadraticFitCalculator%22%2C+%22data3y%22%7D+-%3E%22%7B3921%2C+34908%2C+96749%7D%22
+https://www.wolframalpha.com/input?i=3921+%2B+15560+x+%2B+15427+x%5E2%2C+x+%3D+202300
+631357596621921
