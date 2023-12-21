@@ -176,6 +176,42 @@ impl Network {
     }
 }
 
+fn prime_factors(mut value: usize) -> Vec<(u32, usize)> {
+    let mut result: Vec<(u32, usize)> = vec![];
+    let mut prime = 2;
+    while value > 1 {
+        let mut times = 0;
+        while value % prime == 0 {
+            times += 1;
+            value /= prime;
+        }
+        result.push((times, prime));
+        for i in prime + 1.. {
+            if !result.iter().any(|(_, p)| i % p == 0) {
+                prime = i;
+                break;
+            }
+        }
+    }
+    result
+}
+
+fn lcm<I: Iterator<Item = usize>>(values: I) -> usize {
+    let mut result: usize = 1;
+    let factors = values.map(prime_factors).collect::<Vec<Vec<_>>>();
+    for i in 0..factors.iter().map(Vec::len).max().unwrap_or(0) {
+        let (max_factor, prime) = factors
+            .iter()
+            .map(|fs| fs.get(i).copied().unwrap_or((0, 0)))
+            .max()
+            .unwrap_or((0, 0));
+        if max_factor > 0 {
+            result *= prime.pow(max_factor);
+        }
+    }
+    result
+}
+
 fn main() {
     let mut network = Network::new(
         std::io::stdin()
@@ -185,5 +221,5 @@ fn main() {
             .as_slice(),
     );
     let cycles = network.push_button();
-    println!("least common multiple of: {cycles:?}");
+    println!("{}", lcm(cycles.iter().copied()));
 }
