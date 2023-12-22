@@ -74,15 +74,24 @@ fn main() {
             }
         }
     }
+    println!("making quadratic with points for x = 0, 1, 2...");
+    let mut samples: Vec<isize> = Vec::new();
     for i in 1..=garden_width / 2 + garden_width * 2 {
         positions = take_step(&garden, garden_width, garden_height, &positions);
         if i == garden_width / 2
             || i == garden_width / 2 + garden_width
             || i == garden_width / 2 + garden_width * 2
         {
+            samples.push(positions.len() as isize);
             print!("{} ", positions.len());
             let _ = std::io::stdout().flush();
         }
     }
-    println!("\nfind quadratic with Wolfram Alpha (x = 0, 1, 2), then solve for x = 202300");
+    println!();
+    assert_eq!(3, samples.len());
+    let a = (samples[0] - 2 * samples[1] + samples[2]) / 2;
+    let b = (-3 * samples[0] + 4 * samples[1] - samples[2]) / 2;
+    let c = samples[0];
+    let n = 26_501_365 / garden_width;
+    println!("{}", a * n * n + b * n + c);
 }
